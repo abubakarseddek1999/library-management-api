@@ -6,7 +6,7 @@ import {
     getAllBooks,
     getBookById,
     updateBook
-} from "../controller/book.controler";
+} from "../controller/book.controller";
 
 const bookRouter = Router();
 
