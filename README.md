@@ -40,24 +40,24 @@ A robust **Library Management System** built with **Express.js**, **TypeScript**
 library-management-api/
 
 📦src
- ┣ 📂config
- ┃ ┗ 📜db.ts
- ┣ 📂controller
- ┃ ┣ 📜book.controller.ts
- ┃ ┗ 📜borrow.controller.ts
- ┣ 📂interfaces
- ┃ ┣ 📜book.interface.ts
- ┃ ┗ 📜borrow.interface.ts
- ┣ 📂middlewares
- ┃ ┗ 📜errorHandler.ts
- ┣ 📂models
- ┃ ┣ 📜book.model.ts
- ┃ ┗ 📜borrow.model.ts
- ┣ 📂routes
- ┃ ┣ 📜book.routes.ts
- ┃ ┗ 📜borrow.routes.ts
- ┣ 📜app.ts
- ┗ 📜server
+┣ 📂config
+┃ ┗ 📜db.ts
+┣ 📂controller
+┃ ┣ 📜book.controller.ts
+┃ ┗ 📜borrow.controller.ts
+┣ 📂interfaces
+┃ ┣ 📜book.interface.ts
+┃ ┗ 📜borrow.interface.ts
+┣ 📂middlewares
+┃ ┗ 📜errorHandler.ts
+┣ 📂models
+┃ ┣ 📜book.model.ts
+┃ ┗ 📜borrow.model.ts
+┣ 📂routes
+┃ ┣ 📜book.routes.ts
+┃ ┗ 📜borrow.routes.ts
+┣ 📜app.ts
+┗ 📜server.ts
 \`\`\`
 
 ---
