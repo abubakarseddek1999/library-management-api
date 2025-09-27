@@ -1,10 +1,10 @@
 // src/controllers/borrow.controller.ts
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 // import Book from "../models/book.model";
 import { Borrow } from "../models/borrow.model";
 
 // ================== CREATE BORROW ==================
-export const createBorrow = async (req: Request, res: Response) => {
+export const createBorrow = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { book, quantity, dueDate } = req.body;
 
@@ -20,16 +20,12 @@ export const createBorrow = async (req: Request, res: Response) => {
       data: borrowed,
     });
   } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: "Error borrowing book",
-      error: error.message,
-    });
+    next(error); // সব error middleware-এ যাবে
   }
 };
 
 // ================== GET ALL BORROWS SUMMARY ==================
-export const getAllBorrows = async (req: Request, res: Response) => {
+export const getAllBorrows = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const summary = await Borrow.aggregate([
       {
@@ -66,17 +62,13 @@ export const getAllBorrows = async (req: Request, res: Response) => {
       message: "Borrowed books summary retrieved successfully",
       data: summary,
     });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: "Error fetching borrowed books summary",
-      error: error.message,
-    });
+  } catch  (error: any) {
+    next(error); // সব error middleware-এ যাবে
   }
 };
 
 // ================== GET BORROW BY ID ==================
-export const getBorrowById = async (req: Request, res: Response) => {
+export const getBorrowById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const borrowId = req.params.borrowId;
     const borrow = await Borrow.findById(borrowId).populate("book", "title isbn");
@@ -93,11 +85,7 @@ export const getBorrowById = async (req: Request, res: Response) => {
       message: "Borrow record retrieved successfully",
       data: borrow,
     });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: "Error fetching borrow record",
-      error: error.message,
-    });
+  }catch (error: any) {
+    next(error); // সব error middleware-এ যাবে
   }
 };

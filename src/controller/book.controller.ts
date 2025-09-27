@@ -1,60 +1,47 @@
 // src/controllers/book.controller.ts
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { Book } from "../models/book.model";
 import { IBook } from "../interfaces/book.interface";
 
 // ================== CREATE BOOK ==================
-export const createBook = async (req: Request, res: Response) => {
-    try {
-        const { title, author, genre, isbn, description, copies, available } = req.body;
+export const createBook = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { title, author, genre, isbn, description, copies, available } = req.body;
 
-        // 1️⃣ Early check for duplicate ISBN
-        const existingBook = await Book.findOne({ isbn });
-        if (existingBook) {
-            return res.status(400).json({
-                message: "Book with this ISBN already exists",
-                success: false,
-            });
-        }
-
-        // 2️⃣ Create book
-        const newBook = await Book.create({
-            title,
-            author,
-            genre,
-            isbn,
-            description,
-            copies,
-            available: available ?? true,
-        });
-
-        // Success response
-        res.status(201).json({
-            success: true,
-            message: "Book created successfully",
-            data: newBook,
-        });
-    } catch (error: any) {
-        // 3️⃣ Handle race condition / duplicate key error (MongoDB)
-        if (error.code === 11000) {
-            return res.status(400).json({
-                success: false,
-                message: "Book with this ISBN already exists (duplicate detected by DB)",
-            });
-        }
-
-        // General error
-        res.status(500).json({
-            success: false,
-            message: "Error creating book",
-            error: error.message,
-        });
+    // 1️⃣ Early check for duplicate ISBN
+    const existingBook = await Book.findOne({ isbn });
+    if (existingBook) {
+      // সরাসরি response না দিয়ে error throw করো
+      const err: any = new Error("Book with this ISBN already exists");
+      err.statusCode = 400;
+      return next(err);
     }
+
+    // 2️⃣ Create book
+    const newBook = await Book.create({
+      title,
+      author,
+      genre,
+      isbn,
+      description,
+      copies,
+      available: available ?? true,
+    });
+
+    // ✅ Success response
+    res.status(201).json({
+      success: true,
+      message: "Book created successfully",
+      data: newBook,
+    });
+  } catch (error: any) {
+    next(error); // সব error middleware-এ যাবে
+  }
 };
 
 
 // ================== GET ALL BOOKS ==================
-export const getAllBooks = async (req: Request, res: Response) => {
+export const getAllBooks = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { filter, sortBy = "createdAt", sort = "desc", limit = 10 } = req.query;
 
@@ -71,16 +58,12 @@ export const getAllBooks = async (req: Request, res: Response) => {
             data: books,
         });
     } catch (error: any) {
-        res.status(500).json({
-            success: false,
-            message: "Error fetching books",
-            error: error.message,
-        });
-    }
+        next(error); // সব error middleware-এ যাবে
+      }
 };
 
 // ================== GET BOOK BY ID ==================
-export const getBookById = async (req: Request, res: Response) => {
+export const getBookById = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { bookId } = req.params;
         const book = await Book.findById(bookId);
@@ -98,17 +81,13 @@ export const getBookById = async (req: Request, res: Response) => {
             data: book,
         });
     } catch (error: any) {
-        res.status(500).json({
-            success: false,
-            message: "Error fetching book",
-            error: error.message,
-        });
-    }
+        next(error); // সব error middleware-এ যাবে
+      }
 };
 
 
 // ================== UPDATE BOOK ==================
-export const updateBook = async (req: Request, res: Response) => {
+export const updateBook = async (req: Request, res: Response , next: NextFunction) => {
     try {
         const { bookId } = req.params;
 
@@ -134,17 +113,13 @@ export const updateBook = async (req: Request, res: Response) => {
             data: updatedBook,
         });
     } catch (error: any) {
-        res.status(500).json({
-            success: false,
-            message: "Error updating book",
-            error: error.message,
-        });
-    }
+        next(error); // সব error middleware-এ যাবে
+      }
 };
 
 
 // ================== DELETE BOOK ==================
-export const deleteBook = async (req: Request, res: Response) => {
+export const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { bookId } = req.params;
         const deletedBook = await Book.findByIdAndDelete(bookId);
@@ -162,10 +137,6 @@ export const deleteBook = async (req: Request, res: Response) => {
             data: null,
         });
     } catch (error: any) {
-        res.status(500).json({
-            success: false,
-            message: "Error deleting book",
-            error: error.message,
-        });
-    }
+        next(error); // সব error middleware-এ যাবে
+      }
 };
