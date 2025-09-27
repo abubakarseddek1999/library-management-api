@@ -38,31 +38,30 @@ A robust **Library Management System** built with **Express.js**, **TypeScript**
 
 \`\`\`
 library-management-api/
-├── 📁 dist/                    # Compiled JavaScript files
-├── 📁 node_modules/            # Project dependencies
+├── 📁 dist/                  
+├── 📁 node_modules/            
 ├── 📁 src/
 │   ├── 📁 config/
-│   │   └── db.ts              # MongoDB connection configuration
-│   ├── 📁 controllers/
-│   │   ├── book.controller.ts  # Book-related business logic
-│   │   └── borrow.controller.ts # Borrowing operations logic
+│   │   └── db.ts            
+│   │   ├── book.controller.ts 
+│   │   └── borrow.controller.ts 
 │   ├── 📁 interfaces/
-│   │   ├── book.interface.ts   # Book type definitions
-│   │   └── borrow.interface.ts # Borrow type definitions
+│   │   ├── book.interface.ts  
+│   │   └── borrow.interface.ts 
 │   ├── 📁 middlewares/
-│   │   └── errorHandler.ts     # Global error handling middleware
+│   │   └── errorHandler.ts    
 │   ├── 📁 models/
-│   │   ├── book.model.ts       # Book MongoDB schema
-│   │   └── borrow.model.ts     # Borrow MongoDB schema
+│   │   ├── book.model.ts      
+│   │   └── borrow.model.ts     
 │   ├── 📁 routes/
-│   │   ├── book.routes.ts      # Book API endpoints
-│   │   └── borrow.routes.ts    # Borrow API endpoints
-│   ├── app.ts                  # Express application setup
-│   └── server.ts               # Server entry point
-├── .env                        # Environment variables
-├── package.json                # Project dependencies and scripts
-├── tsconfig.json              # TypeScript configuration
-└── README.md                   # Project documentation
+│   │   ├── book.routes.ts    
+│   │   └── borrow.routes.ts    
+│   ├── app.ts                  
+│   └── server.ts               
+├── .env                        
+├── package.json               
+├── tsconfig.json             
+└── README.md                
 \`\`\`
 
 ---
@@ -290,15 +289,12 @@ npm run format
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 📞 Support
 
-For support, email [your-email@example.com](mailto:your-email@example.com) or create an issue in the repository.
+For support, email [your-email@example.com](abubakarseddek1999@gmail.com).
 
 ---
 
@@ -312,6 +308,6 @@ For support, email [your-email@example.com](mailto:your-email@example.com) or cr
 ---
 
 <div align="center">
-  <p>Made with ❤️ by [Your Name]</p>
+  <p>Made with ❤️ by [Abu bakar]</p>
   <p>⭐ Star this repository if you found it helpful!</p>
 </div>
