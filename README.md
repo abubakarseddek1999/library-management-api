@@ -38,30 +38,26 @@ A robust **Library Management System** built with **Express.js**, **TypeScript**
 
 \`\`\`
 library-management-api/
-├── 📁 dist/                  
-├── 📁 node_modules/            
-├── 📁 src/
-│   ├── 📁 config/
-│   │   └── db.ts            
-│   │   ├── book.controller.ts 
-│   │   └── borrow.controller.ts 
-│   ├── 📁 interfaces/
-│   │   ├── book.interface.ts  
-│   │   └── borrow.interface.ts 
-│   ├── 📁 middlewares/
-│   │   └── errorHandler.ts    
-│   ├── 📁 models/
-│   │   ├── book.model.ts      
-│   │   └── borrow.model.ts     
-│   ├── 📁 routes/
-│   │   ├── book.routes.ts    
-│   │   └── borrow.routes.ts    
-│   ├── app.ts                  
-│   └── server.ts               
-├── .env                        
-├── package.json               
-├── tsconfig.json             
-└── README.md                
+
+📦src
+ ┣ 📂config
+ ┃ ┗ 📜db.ts
+ ┣ 📂controller
+ ┃ ┣ 📜book.controller.ts
+ ┃ ┗ 📜borrow.controller.ts
+ ┣ 📂interfaces
+ ┃ ┣ 📜book.interface.ts
+ ┃ ┗ 📜borrow.interface.ts
+ ┣ 📂middlewares
+ ┃ ┗ 📜errorHandler.ts
+ ┣ 📂models
+ ┃ ┣ 📜book.model.ts
+ ┃ ┗ 📜borrow.model.ts
+ ┣ 📂routes
+ ┃ ┣ 📜book.routes.ts
+ ┃ ┗ 📜borrow.routes.ts
+ ┣ 📜app.ts
+ ┗ 📜server
 \`\`\`
 
 ---
