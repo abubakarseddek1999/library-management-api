@@ -39,11 +39,19 @@ A robust **Library Management System** built with **Express.js**, **TypeScript**
 \`\`\`
 library-management-api/
 
+<<<<<<< HEAD
 📦src
  ┣ 📂config
  ┃ ┗ 📜db.ts
  ┣ 📂controller 
  ┃ ┣ 📜book.controller.ts 
+=======
+📦s📦src
+ ┣ 📂config
+ ┃ ┗ 📜db.ts
+ ┣ 📂controller
+ ┃ ┣ 📜book.controller.ts
+>>>>>>> d35c0d61556a21724aae420ce7770987d152a26c
  ┃ ┗ 📜borrow.controller.ts
  ┣ 📂interfaces
  ┃ ┣ 📜book.interface.ts
