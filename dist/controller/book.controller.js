@@ -92,6 +92,7 @@ exports.getBookById = getBookById;
 const updateBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { bookId } = req.params;
+        console.log(req.body);
         // Only update the fields provided in req.body
         const updatedBook = yield book_model_1.Book.findByIdAndUpdate(bookId, req.body, {
             new: true, // return the updated document

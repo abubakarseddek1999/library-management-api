@@ -11,8 +11,11 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json()); // <-- parse JSON bodies
 app.use((0, cors_1.default)({
-    origin: "http://localhost:3000", // শুধু React app এর জন্য allow
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [
+        "http://localhost:3000",
+        "https://library-management-theta-vert.vercel.app" // no trailing slash
+    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true
 }));
 // ================= ROUTES ==================

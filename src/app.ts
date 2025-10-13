@@ -8,10 +8,13 @@ const app: Application = express();
 app.use(express.json());  // <-- parse JSON bodies
 
 app.use(cors({
-    origin: "http://localhost:3000", // শুধু React app এর জন্য allow
-    methods: ["GET", "POST", "PUT","PATCH", "DELETE"],
-    credentials: true
-  }));
+  origin: [
+    "http://localhost:3000",
+    "https://library-management-theta-vert.vercel.app" // no trailing slash
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true
+}));
 
 
 // ================= ROUTES ==================
