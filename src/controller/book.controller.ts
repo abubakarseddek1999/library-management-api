@@ -90,6 +90,7 @@ export const getBookById = async (req: Request, res: Response, next: NextFunctio
 export const updateBook = async (req: Request, res: Response , next: NextFunction) => {
     try {
         const { bookId } = req.params;
+        console.log(req.body);
 
         // Only update the fields provided in req.body
         const updatedBook = await Book.findByIdAndUpdate(bookId, req.body, {
